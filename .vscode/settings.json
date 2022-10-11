@@ -1,0 +1,7 @@
+{
+    "files.insertFinalNewline": true,
+    "editor.fontSize": 16,
+    "editor.renderWhitespace": "all",
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true
+}

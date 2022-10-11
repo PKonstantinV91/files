@@ -30,17 +30,21 @@ def number_of_line(*files):
     for file in files:
         with open(file, encoding='utf-8') as file_obj:
             lines.update({file: len(file_obj.readlines())})
-    lines2 = {}        
+    lines2 = {}
     for i in sorted(lines, key=lines.get):
         lines2[i] = lines[i]
     return lines2
 
+
 def writing_file(*files):
+    text_dict = {}
     for i in number_of_line('files/1.txt', 'files/2.txt', 'files/3.txt'):
         with open(i, encoding='utf-8') as file_obj:
-            print(file_obj)
-    for i in number_of_line('files/1.txt', 'files/2.txt', 'files/3.txt').items():
+            f = file_obj.read()
+            text_dict.update({i: f})
+    for key, value in text_dict.items():
         with open('files/total.txt', 'a', encoding='utf-8') as file:
-            file.writelines([f'{i[0]}\n{i[1]}\n{file_obj}\n'])
-            
+            file.writelines([f"{key}\n{number_of_line(*files)[key]}\n{value}\n"])
+
+
 writing_file('files/1.txt', 'files/2.txt', 'files/3.txt')
