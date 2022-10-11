@@ -1,28 +1,28 @@
-# cook_book = {}
-# with open('file1.txt', 'rt', encoding='utf8') as file:
-#     for l in file:
-#         dish = l.strip()
-#         ingredients = []
-#         ingredients_count = file.readline()
-#         for i in range(int(ingredients_count)):
-#             ingr = file.readline()
-#             ingredient_name, quantity, measure = ingr.strip().split(' | ')
-#             ingredients.append({'ingredient_name': ingredient_name, 'quantity': quantity, 'measure': measure})
-#         blank_line = file.readline()
-#         cook_book.update({dish: ingredients})
-# print(cook_book)
-# print()
+cook_book = {}
+with open('file1.txt', 'rt', encoding='utf8') as file:
+    for l in file:
+        dish = l.strip()
+        ingredients = []
+        ingredients_count = file.readline()
+        for i in range(int(ingredients_count)):
+            ingr = file.readline()
+            ingredient_name, quantity, measure = ingr.strip().split(' | ')
+            ingredients.append({'ingredient_name': ingredient_name, 'quantity': quantity, 'measure': measure})
+        blank_line = file.readline()
+        cook_book.update({dish: ingredients})
+print(cook_book)
+print()
 
-# def get_shop_list_by_dishes(dishes, person_count):
-#     shop_list = {}
-#     for i in dishes:
-#         if i in cook_book.keys():
-#             for l in cook_book[i]:
-#                 person_quantity = int(l['quantity']) * person_count
-#                 shop_list.update({l['ingredient_name']: {'measure': l['measure'], 'quantity': person_quantity}})
-#     return shop_list
+def get_shop_list_by_dishes(dishes, person_count):
+    shop_list = {}
+    for i in dishes:
+        if i in cook_book.keys():
+            for l in cook_book[i]:
+                person_quantity = int(l['quantity']) * person_count
+                shop_list.update({l['ingredient_name']: {'measure': l['measure'], 'quantity': person_quantity}})
+    return shop_list
 
-# print(get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 2))
+print(get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 2))
 
 
 def number_of_line(*files):
